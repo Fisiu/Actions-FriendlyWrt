@@ -32,3 +32,77 @@ EOL
 # EOL
 sed -i -e '/boardname=/r /tmp/appendtext.txt' friendlywrt/target/linux/rockchip/armv8/base-files/root/setup.sh
 # }}
+
+# 01-nanopi
+sed -i -e '/CONFIG_ARIA2_BITTORRENT=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_ARIA2_NOXML=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_ARIA2_OPENSSL=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_ARIA2_WEBSOCKET=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_aria2=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_collectd-mod-iwinfo=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_collectd-mod-wireless=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_hd-idle=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_hostapd-common=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_iw=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_iwinfo=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_kmod-cfg80211=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_libiwinfo=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_libiwinfo-data=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_libiwinfo-lua=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-app-aria2=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-app-hd-idle=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-app-minidlna=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-app-samba4=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-app-smartdns=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-app-upnp=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-theme-material=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_luci-theme-openwrt-2020=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_minidlna=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_miniupnpd=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_miniupnpd-nftables=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_rpcd-mod-iwinfo=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_samba4-libs=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_samba4-server=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_smartdns=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_usb-modeswitch-official=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_vsftpd=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_wireless-regdb=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_wpad-mini=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_PACKAGE_wsdd2=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_SAMBA4_SERVER_AVAHI=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_SAMBA4_SERVER_NETBIOS=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_SAMBA4_SERVER_VFS=y/d' configs/rockchip/01-nanopi
+sed -i -e '/CONFIG_SAMBA4_SERVER_WSDD2=y/d' configs/rockchip/01-nanopi
+
+# 02-luci_lang
+echo "CONFIG_LUCI_LANG_en=y" > configs/rockchip/02-luci_lang
+
+# 03-custom
+
+# 04-utils
+cat >> configs/rockchip/04-utils <<EOL
+# custom
+CONFIG_PACKAGE_luci-proto-wireguard=y
+CONFIG_PACKAGE_luci-app-wireguard=y
+CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+CONFIG_PACKAGE_htop=y
+CONFIG_PACKAGE_tcpdump=y
+CONFIG_PACKAGE_banip=y
+CONFIG_PACKAGE_luci-app-banip=y
+CONFIG_PACKAGE_nvme-cli=y
+CONFIG_PACKAGE_tinyproxy=y
+CONFIG_PACKAGE_luci-app-tinyproxy=y
+EOL
+
+# 05-wifi
+sed -i -e '/firmware/d' configs/rockchip/05-wifi
+
+
+# distfeeds
+sed -i -e '/^#/d' device/common/distfeeds/install.sh
+sed -i -e 's|mirrors.cloud.tencent.com/openwrt|downloads.openwrt.org|' device/common/distfeeds/install.sh
+sed -i -e 's/aarch64_generic/aarch64_cortex-a53/' device/common/distfeeds/install.sh
+
+# emmc-tools
+sed -i -e '10,13d' device/common/emmc-tools/install.sh
+rm -f device/common/emmc-tools/luci-i18n-emmc-tools-zh-cn.ipk
