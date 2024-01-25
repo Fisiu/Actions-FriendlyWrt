@@ -97,6 +97,11 @@ EOL
 # 05-wifi
 sed -i -e '/firmware/d' configs/rockchip/05-wifi
 
+# 06-docker
+cat >> configs/rockchip-docker/06-docker <<EOL
+# custom
+CONFIG_PACKAGE_docker-compose=y
+EOL
 
 # distfeeds
 sed -i -e '/^#/d' device/common/distfeeds/install.sh

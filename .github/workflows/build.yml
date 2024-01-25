@@ -235,7 +235,7 @@ jobs:
           ;;
         esac
         [ "${{ matrix.SET }}" == "docker" ] && SUFFIX="-docker"
-        FILENAME=${MODEL}-FriendlyWrt-${{ matrix.VERSION }}${SUFFIX}.img
+        FILENAME=friendlywrt-${{ matrix.VERSION }}${SUFFIX}_$(date +%Y%m%d)_${{ matrix.CPU }}.img
         DIRNAME=friendlywrt$(echo ${{ matrix.VERSION }}|awk -F . '{print $1}')${SUFFIX}
         CONFIG=rockchip${SUFFIX}
         cat > .current_config.mk <<EOL
