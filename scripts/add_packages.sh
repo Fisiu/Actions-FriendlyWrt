@@ -85,6 +85,7 @@ cat >> configs/rockchip/04-utils <<EOL
 CONFIG_PACKAGE_luci-proto-wireguard=y
 CONFIG_PACKAGE_luci-app-wireguard=y
 CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+CONFIG_PACKAGE_bind-host=y
 CONFIG_PACKAGE_htop=y
 CONFIG_PACKAGE_tcpdump=y
 CONFIG_PACKAGE_banip=y
