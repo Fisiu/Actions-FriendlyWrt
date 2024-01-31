@@ -73,6 +73,7 @@ sed -i -e '/CONFIG_SAMBA4_SERVER_AVAHI=y/d' configs/rockchip/01-nanopi
 sed -i -e '/CONFIG_SAMBA4_SERVER_NETBIOS=y/d' configs/rockchip/01-nanopi
 sed -i -e '/CONFIG_SAMBA4_SERVER_VFS=y/d' configs/rockchip/01-nanopi
 sed -i -e '/CONFIG_SAMBA4_SERVER_WSDD2=y/d' configs/rockchip/01-nanopi
+sed -i -e 's/vim-full/vim-fuller/' configs/rockchip/01-nanopi
 
 # 02-luci_lang
 echo "CONFIG_LUCI_LANG_en=y" > configs/rockchip/02-luci_lang
@@ -93,6 +94,7 @@ CONFIG_PACKAGE_luci-app-banip=y
 CONFIG_PACKAGE_nvme-cli=y
 CONFIG_PACKAGE_tinyproxy=y
 CONFIG_PACKAGE_luci-app-tinyproxy=y
+CONFIG_PACKAGE_collectd-mod-dns=y
 EOL
 
 # 05-wifi
@@ -108,8 +110,9 @@ EOL
 echo "distfeeds: $(pwd)"
 echo "$(cat device/common/distfeeds/install.sh)"
 sed -i -e '8,12d' device/common/distfeeds/install.sh
-sed -i -e 's|mirrors.cloud.tencent.com/openwrt|downloads.openwrt.org|' device/common/distfeeds/install.sh
+sed -i -e 's|mirrors\.cloud\.tencent\.com\/openwrt|downloads.openwrt.org|' device/common/distfeeds/install.sh
 sed -i -e 's/aarch64_generic/aarch64_cortex-a53/' device/common/distfeeds/install.sh
+echo "$(cat device/common/distfeeds/install.sh)"
 
 # emmc-tools
 sed -i -e '10,13d' device/common/emmc-tools/install.sh
