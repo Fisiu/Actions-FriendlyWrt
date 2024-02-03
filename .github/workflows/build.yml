@@ -1,3 +1,4 @@
+name: friendlywrt
 on:
   watch:
     types: started
@@ -256,7 +257,7 @@ jobs:
       run: |
         cd project
         ./build.sh uboot
-        ./build.sh kernel
+        BUILD_THIRD_PARTY_DRIVER=0 ./build.sh kernel
 
     - name: Build sd image
       id: build_sd_image
