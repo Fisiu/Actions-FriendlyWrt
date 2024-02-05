@@ -111,7 +111,6 @@ echo "distfeeds: $(pwd)"
 echo "$(cat device/common/distfeeds/install.sh)"
 sed -i -e '8,12d' device/common/distfeeds/install.sh
 sed -i -e 's|mirrors\.cloud\.tencent\.com\/openwrt|downloads.openwrt.org|' device/common/distfeeds/install.sh
-sed -i -e 's/aarch64_generic/aarch64_cortex-a53/' device/common/distfeeds/install.sh
 echo "$(cat device/common/distfeeds/install.sh)"
 
 # emmc-tools
