@@ -148,7 +148,7 @@ jobs:
       matrix:
         # VERSION: [21.02, 23.05]
         VERSION: [23.05]
-        # CPU: [rk3328, rk3399, rk3566, rk3568, rk3588]
+        # CPU: [rk3328, rk3528, rk3399, rk3566, rk3568, rk3588]
         CPU: [rk3568]
         SET: [docker, non-docker]
     steps:
@@ -220,6 +220,9 @@ jobs:
         case ${{ matrix.CPU }} in
         rk3328)
           MODEL=R2S-R2C-Series
+          ;;
+        rk3528)
+          MODEL=NanoPi-Zero2
           ;;
         rk3399)
           MODEL=R4S-Series
