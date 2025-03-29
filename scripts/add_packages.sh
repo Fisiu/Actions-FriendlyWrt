@@ -93,6 +93,7 @@ CONFIG_PACKAGE_nvme-cli=y
 CONFIG_PACKAGE_tinyproxy=y
 CONFIG_PACKAGE_luci-app-tinyproxy=y
 CONFIG_PACKAGE_collectd-mod-dns=y
+CONFIG_PACKAGE_luci-app-cloudflared=y
 EOL
 
 # 05-wifi
